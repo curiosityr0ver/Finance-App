@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Dancing+Script&family=Poppins:wght@200;400;600&display=swap');
+
+
+html,
+body,
+#root,
+.app {
+  height: 100%;
+  width: 100%;
+  font-family: 'Anton', sans-serif;
+  font-family: 'Dancing Script', cursive;
+  font-family: 'Poppins', sans-serif;
+  background-color: #1f2026;
+}
