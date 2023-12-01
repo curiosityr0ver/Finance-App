@@ -42,9 +42,7 @@ const Navbar = (props: Props) => {
           </Link>
         </Box>
       </FlexBetween>
-
     </FlexBetween >
-
 
   )
 };
