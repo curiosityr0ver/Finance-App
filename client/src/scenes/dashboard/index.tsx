@@ -76,18 +76,45 @@ const Dashboard = (props: Props) => {
             }
         >
 
+            <Row1></Row1>
+            <Row2></Row2>
+            <Row3></Row3>
+        </Box>
+
+    )
+}
+
+
+
+
+const Row1 = () => {
+    return (
+        <>
             <DashBoardBox gridArea="a"></DashBoardBox>
             <DashBoardBox gridArea="b"></DashBoardBox>
             <DashBoardBox gridArea="c"></DashBoardBox>
+        </>
+    )
+}
+
+const Row2 = () => {
+    return (
+        <>
             <DashBoardBox gridArea="d"></DashBoardBox>
             <DashBoardBox gridArea="e"></DashBoardBox>
             <DashBoardBox gridArea="f"></DashBoardBox>
+        </>
+    )
+}
+
+const Row3 = () => {
+    return (
+        <>
             <DashBoardBox gridArea="g"></DashBoardBox>
             <DashBoardBox gridArea="h"></DashBoardBox>
             <DashBoardBox gridArea="i"></DashBoardBox>
             <DashBoardBox gridArea="j"></DashBoardBox>
-        </Box>
-
+        </>
     )
 }
 
