@@ -1,9 +1,8 @@
 import BoxHeader from "@/components/BoxHeader";
 import DashboardBox from "@/components/DashboardBox";
 import FlexBetween from "@/components/FlexBetween";
-import { useGetKpisQuery, useGetProductsQuery } from "@/state/api";
 import { Box, Typography, useTheme } from "@mui/material";
-import React, { useMemo } from "react";
+import { useMemo } from "react";
 import {
   Tooltip,
   CartesianGrid,
@@ -25,17 +24,23 @@ const pieData = [
   { name: "Group B", value: 400 },
 ];
 
-const Row2 = () => {
+const Row2 = ({ data }: { data: any }) => {
+
+  const operationalData = data[0]
+  const productData = data[1]
+  // console.log(data);
+
   const { palette } = useTheme();
   const pieColors = [palette.primary[800], palette.primary[300]];
-  const { data: operationalData } = useGetKpisQuery();
-  const { data: productData } = useGetProductsQuery();
+
+  // const { data: operationalData } = useGetKpisQuery();
+  // const { data: productData } = useGetProductsQuery();
 
   const operationalExpenses = useMemo(() => {
     return (
       operationalData &&
       operationalData[0].monthlyData.map(
-        ({ month, operationalExpenses, nonOperationalExpenses }) => {
+        ({ month, operationalExpenses, nonOperationalExpenses }: { month: any, operationalExpenses: any, nonOperationalExpenses: any }) => {
           return {
             name: month.substring(0, 3),
             "Operational Expenses": operationalExpenses,
@@ -49,7 +54,7 @@ const Row2 = () => {
   const productExpenseData = useMemo(() => {
     return (
       productData &&
-      productData.map(({ _id, price, expense }) => {
+      productData.map(({ _id, price, expense }: { _id: any, price: any, expense: any }) => {
         return {
           id: _id,
           price: price,
@@ -58,6 +63,9 @@ const Row2 = () => {
       })
     );
   }, [productData]);
+
+  console.log(productData);
+
 
   return (
     <>

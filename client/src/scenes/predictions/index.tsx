@@ -1,8 +1,7 @@
 import DashboardBox from "@/components/DashboardBox";
 import FlexBetween from "@/components/FlexBetween";
-import { useGetKpisQuery } from "@/state/api";
 import { Box, Button, Typography, useTheme } from "@mui/material";
-import React, { useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import {
   CartesianGrid,
   Label,
@@ -16,23 +15,26 @@ import {
 } from "recharts";
 import regression, { DataPoint } from "regression";
 
-const Predictions = () => {
+const Predictions = ({ data }: { data: any }) => {
+
+  const kpiData = data[0][0]
+  const [press, setPress] = useState(false)
+  const text = press ? 'Hide ' : 'Show ';
+
   const { palette } = useTheme();
   const [isPredictions, setIsPredictions] = useState(false);
-  const { data: kpiData } = useGetKpisQuery();
 
   const formattedData = useMemo(() => {
-    if (!kpiData) return [];
-    const monthData = kpiData[0].monthlyData;
+    const monthData = kpiData.monthlyData;
 
     const formatted: Array<DataPoint> = monthData.map(
-      ({ revenue }, i: number) => {
+      ({ revenue }: { revenue: any }, i: number) => {
         return [i, revenue];
       }
     );
     const regressionLine = regression.linear(formatted);
 
-    return monthData.map(({ month, revenue }, i: number) => {
+    return monthData.map(({ month, revenue }: { month: string, revenue: number }, i: number) => {
       return {
         name: month,
         "Actual Revenue": revenue,
@@ -53,14 +55,14 @@ const Predictions = () => {
           </Typography>
         </Box>
         <Button
-          onClick={() => setIsPredictions(!isPredictions)}
+          onClick={() => { setIsPredictions(!isPredictions); setPress(!press) }}
           sx={{
             color: palette.grey[900],
             backgroundColor: palette.grey[700],
             boxShadow: "0.1rem 0.1rem 0.1rem 0.1rem rgba(0,0,0,.4)",
           }}
         >
-          Show Predicted Revenue for Next Year
+          {text} Predicted Revenue for Next Year
         </Button>
       </FlexBetween>
       <ResponsiveContainer width="100%" height="100%">

@@ -1,6 +1,5 @@
 import BoxHeader from "@/components/BoxHeader";
 import DashboardBox from "@/components/DashboardBox";
-import { useGetKpisQuery } from "@/state/api";
 import { useTheme } from "@mui/material";
 import { useMemo } from "react";
 import {
@@ -18,16 +17,16 @@ import {
   Area,
 } from "recharts";
 
-const Row1 = () => {
-  const { palette } = useTheme();
-  const { data } = useGetKpisQuery();
-  console.log(useGetKpisQuery());
+const Row1 = ({ data }: { data: any }) => {
+  data = data[0][0]
+  console.log(data);
 
+  const { palette } = useTheme();
 
   const revenue = useMemo(() => {
     return (
       data &&
-      data[0].monthlyData.map(({ month, revenue }) => {
+      data.monthlyData.map(({ month, revenue }: { month: any, revenue: any }) => {
         return {
           name: month.substring(0, 3),
           revenue: revenue,
@@ -39,7 +38,7 @@ const Row1 = () => {
   const revenueExpenses = useMemo(() => {
     return (
       data &&
-      data[0].monthlyData.map(({ month, revenue, expenses }) => {
+      data.monthlyData.map(({ month, revenue, expenses }: { month: any, revenue: any, expenses: any }) => {
         return {
           name: month.substring(0, 3),
           revenue: revenue,
@@ -52,7 +51,7 @@ const Row1 = () => {
   const revenueProfit = useMemo(() => {
     return (
       data &&
-      data[0].monthlyData.map(({ month, revenue, expenses }) => {
+      data.monthlyData.map(({ month, revenue, expenses }: { month: any, revenue: any, expenses: any }) => {
         return {
           name: month.substring(0, 3),
           revenue: revenue,
@@ -64,6 +63,7 @@ const Row1 = () => {
 
   return (
     <>
+      {/* <h1>Yess</h1> */}
       <DashboardBox gridArea="a">
         <BoxHeader
           title="Revenue and Expenses"

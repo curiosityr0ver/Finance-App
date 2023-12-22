@@ -1,23 +1,23 @@
 import BoxHeader from "@/components/BoxHeader";
 import DashboardBox from "@/components/DashboardBox";
 import FlexBetween from "@/components/FlexBetween";
-import {
-  useGetKpisQuery,
-  useGetProductsQuery,
-  useGetTransactionsQuery,
-} from "@/state/api";
 import { Box, Typography, useTheme } from "@mui/material";
 import { DataGrid, GridCellParams } from "@mui/x-data-grid";
-import React, { useMemo } from "react";
+import { useMemo } from "react";
 import { Cell, Pie, PieChart } from "recharts";
 
-const Row3 = () => {
+const Row3 = ({ data }: { data: any }) => {
+
+  console.log(data);
+
+  const kpiData = data[0]
+  const productData = data[1]
+  const transactionData = data[2]
+  // console.log(productData);
+
+
   const { palette } = useTheme();
   const pieColors = [palette.primary[800], palette.primary[500]];
-
-  const { data: kpiData } = useGetKpisQuery();
-  const { data: productData } = useGetProductsQuery();
-  const { data: transactionData } = useGetTransactionsQuery();
 
   const pieChartData = useMemo(() => {
     if (kpiData) {
@@ -118,6 +118,7 @@ const Row3 = () => {
             hideFooter={true}
             rows={productData || []}
             columns={productColumns}
+            getRowId={(row: any) => row._id}
           />
         </Box>
       </DashboardBox>
@@ -146,12 +147,14 @@ const Row3 = () => {
             },
           }}
         >
+
           <DataGrid
             columnHeaderHeight={25}
             rowHeight={35}
             hideFooter={true}
             rows={transactionData || []}
             columns={transactionColumns}
+            getRowId={(row: any) => row._id}
           />
         </Box>
       </DashboardBox>
@@ -169,7 +172,7 @@ const Row3 = () => {
                   paddingAngle={2}
                   dataKey="value"
                 >
-                  {data.map((entry, index) => (
+                  {data.map((_entry, index) => (
                     <Cell key={`cell-${index}`} fill={pieColors[index]} />
                   ))}
                 </Pie>
