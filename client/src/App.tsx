@@ -18,7 +18,7 @@ function App() {
 
   useEffect(() => {
 
-    // console.log(import.meta.env.VITE_URL);
+    console.log(import.meta.env.VITE_URL);
     const isBackEndLive = false;
 
     const fetchData = async () => {
