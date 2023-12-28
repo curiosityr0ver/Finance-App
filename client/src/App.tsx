@@ -10,22 +10,26 @@ import Dashboard from "@/scenes/dashboard";
 import Predictions from "@/scenes/predictions";
 import About from "@/scenes/about";
 import axios from "axios";
+import { data2 } from './assets/data'
+
 
 function App() {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState(data2);
 
   useEffect(() => {
 
     // console.log(import.meta.env.VITE_URL);
+    const isBackEndLive = false;
 
     const fetchData = async () => {
-      const response = await axios.get(import.meta.env.VITE_URL)
 
-      setData(response.data)
+      if (isBackEndLive) {
+        const response = await axios.get(import.meta.env.VITE_URL)
+        setData(response.data)
+      }
     }
     if (!data) fetchData()
 
-    // console.log(data);
 
   }, [])
 

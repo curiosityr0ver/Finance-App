@@ -8,8 +8,6 @@ import { Cell, Pie, PieChart } from "recharts";
 
 const Row3 = ({ data }: { data: any }) => {
 
-  console.log(data);
-
   const kpiData = data[0]
   const productData = data[1]
   const transactionData = data[2]
@@ -23,7 +21,7 @@ const Row3 = ({ data }: { data: any }) => {
     if (kpiData) {
       const totalExpenses = kpiData[0].totalExpenses;
       return Object.entries(kpiData[0].expensesByCategory).map(
-        ([key, value]) => {
+        ([key, value]: [key: any, value: any]) => {
           return [
             {
               name: key,

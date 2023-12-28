@@ -28,7 +28,6 @@ const Row2 = ({ data }: { data: any }) => {
 
   const operationalData = data[0]
   const productData = data[1]
-  // console.log(data);
 
   const { palette } = useTheme();
   const pieColors = [palette.primary[800], palette.primary[300]];
@@ -63,8 +62,6 @@ const Row2 = ({ data }: { data: any }) => {
       })
     );
   }, [productData]);
-
-  console.log(productData);
 
 
   return (
@@ -141,7 +138,7 @@ const Row2 = ({ data }: { data: any }) => {
               paddingAngle={2}
               dataKey="value"
             >
-              {pieData.map((entry, index) => (
+              {pieData.map((_entry, index) => (
                 <Cell key={`cell-${index}`} fill={pieColors[index]} />
               ))}
             </Pie>
