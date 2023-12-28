@@ -1,5 +1,5 @@
-import BoxHeader from "@/components/BoxHeader";
-import DashboardBox from "@/components/DashboardBox";
+import BoxHeader from "../../components/BoxHeader";
+import DashboardBox from "../../components/DashboardBox";
 import { useTheme } from "@mui/material";
 import { useMemo } from "react";
 import {

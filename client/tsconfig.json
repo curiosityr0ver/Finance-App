@@ -4,9 +4,6 @@
       "@/*": [
         "./src/*"
       ],
-      "@components/*": [
-        "./components/*"
-      ],
     },
     "target": "ES2020",
     "useDefineForClassFields": true,
