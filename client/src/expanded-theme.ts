@@ -10,3 +10,11 @@ declare module "@mui/material/styles/createPalette" {
     tertiary: PaletteColor;
   }
 }
+
+const expan = (props: Palette, dops: PaletteColor) => {
+  return (
+    { props, dops }
+  )
+}
+
+export { expan };
