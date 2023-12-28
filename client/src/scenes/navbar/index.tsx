@@ -4,9 +4,7 @@ import PixIcon from "@mui/icons-material/Pix";
 import { Box, Typography, useTheme } from "@mui/material";
 import FlexBetween from "@/components/FlexBetween";
 
-type Props = {};
-
-const Navbar = (props: Props) => {
+const Navbar = () => {
   const { palette } = useTheme();
   const [selected, setSelected] = useState("dashboard");
   return (
@@ -15,7 +13,7 @@ const Navbar = (props: Props) => {
       <FlexBetween gap="0.75rem">
         <PixIcon sx={{ fontSize: "28px" }} />
         <Typography variant="h4" fontSize="16px">
-          Finanseer
+          Deloitte
         </Typography>
       </FlexBetween>
 
@@ -43,6 +41,18 @@ const Navbar = (props: Props) => {
             }}
           >
             predictions
+          </Link>
+        </Box>
+        <Box sx={{ "&:hover": { color: palette.primary[100] } }}>
+          <Link
+            to="/about"
+            onClick={() => setSelected("about")}
+            style={{
+              color: selected === "about" ? "inherit" : palette.grey[700],
+              textDecoration: "inherit",
+            }}
+          >
+            about
           </Link>
         </Box>
       </FlexBetween>

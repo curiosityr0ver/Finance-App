@@ -1,4 +1,5 @@
 import { Box } from "@mui/material";
+import './App.css'
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
 import { useMemo, useState, useEffect } from "react";
@@ -7,20 +8,24 @@ import { themeSettings } from "./theme";
 import Navbar from "@/scenes/navbar";
 import Dashboard from "@/scenes/dashboard";
 import Predictions from "@/scenes/predictions";
+import About from "@/scenes/about";
 import axios from "axios";
 
-
 function App() {
-  const [data, setData] = useState();
+  const [data, setData] = useState(null);
 
   useEffect(() => {
+
+    // console.log(import.meta.env.VITE_URL);
+
     const fetchData = async () => {
-      const response = await axios.get("http://localhost:9000/")
-      console.log(response.data);
+      const response = await axios.get(import.meta.env.VITE_URL)
+
       setData(response.data)
     }
+    if (!data) fetchData()
 
-    fetchData()
+    // console.log(data);
 
   }, [])
 
@@ -35,6 +40,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Dashboard data={data} />} />
               <Route path="/predictions" element={<Predictions data={data} />} />
+              <Route path="/about" element={<About />} />
             </Routes>
           </Box>
         </ThemeProvider>
@@ -42,5 +48,8 @@ function App() {
     </div>
   );
 }
+
+
+
 
 export default App;

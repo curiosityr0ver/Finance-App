@@ -19,7 +19,7 @@ import {
 
 const Row1 = ({ data }: { data: any }) => {
   data = data[0][0]
-  console.log(data);
+  // console.log(data);
 
   const { palette } = useTheme();
 

@@ -17,14 +17,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
-app.listen(9000, () => console.log(`Server Port: 9000`));
+app.listen(process.env.PORT || 9000, () => console.log(`Servert Port: ${process.env.PORT || 9000}`));
 
 app.get("/", async (req, res) => {
 
-  const mongoClient = new MongoClient('mongodb+srv://ranvijay:Ytrewq321@cluster0.xpzam.mongodb.net/?retryWrites=true&w=majority'
-  );
+  const mongoClient = new MongoClient(process.env.MONGO_URL);
 
-  console.log("*********** hey ***********");
   const data = await mongoClient.db().collection('kpis').find().toArray();
   const products = await mongoClient.db().collection('products').find().toArray();
   const transactions = await mongoClient.db().collection('transactions').find().toArray();

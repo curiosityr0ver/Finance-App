@@ -48,7 +48,7 @@ const gridTemplateSmallScreens = `
   "j"
 `;
 
-const Dashboard = ({ data }) => {
+const Dashboard = ({ data }: { data: any }) => {
   const isAboveMediumScreens = useMediaQuery("(min-width: 1200px)");
 
   if (data) {
