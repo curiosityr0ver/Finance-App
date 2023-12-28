@@ -1,6 +1,6 @@
-import BoxHeader from "../../components/BoxHeader";
-import DashboardBox from "../../components/DashboardBox";
-import FlexBetween from "../../components/FlexBetween";
+import BoxHeader from "./BoxHeader";
+import DashboardBox from "./DashboardBox";
+import FlexBetween from "./FlexBetween";
 import { Box, Typography, useTheme } from "@mui/material";
 import { useMemo } from "react";
 import {

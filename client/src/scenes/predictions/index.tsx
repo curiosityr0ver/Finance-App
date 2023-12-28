@@ -1,5 +1,5 @@
-import DashboardBox from "@/components/DashboardBox";
-import FlexBetween from "@/components/FlexBetween";
+import DashboardBox from "./DashboardBox";
+import FlexBetween from "./FlexBetween";
 import { Box, Button, Typography, useTheme } from "@mui/material";
 import { useMemo, useState } from "react";
 import {
