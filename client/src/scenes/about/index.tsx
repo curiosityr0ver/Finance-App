@@ -26,7 +26,7 @@ const Dashboard = () => {
                     <CustomCard info={info3} image={Img3} />
                 </Grid>
             </Grid>
-            <Grid container spacing={10}>
+            <Grid container spacing={isAboveMediumScreens ? 10 : 1}>
                 <Grid xs={3}>
                     <CustomButton info={info4} />
                 </Grid>
